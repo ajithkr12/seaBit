@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+
+code {
+  font-family: 'Lato', sans-serif;
+}
+
+.inputRounded .MuiOutlinedInput-root {
+  border-radius: 22px;
+  font-size: 14px;
+
+  /* color: blue;opacity: 0.4; */
+  
+}
+inputRounded1 .MuiOutlinedInput-root {
+  border-radius: 12px;
+  font-size: 14px;
+
+  /* color: blue;opacity: 0.4; */
+  
+}
