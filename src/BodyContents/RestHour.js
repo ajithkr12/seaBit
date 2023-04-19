@@ -27,11 +27,22 @@ const RestHour = () => {
     start: "2022-01-02",
     end: "2022-03-03",
   });
+  const today=new Date();
 
   return (
     <>
       <HeadingBar icon={Sleep} heading={"Rest Hour"} />
 
+      <Grid md={12} 
+      style={{
+        marginTop:"20px"
+      }}
+      >
+        <h4>Today : {today.toDateString()}</h4>
+      </Grid>
+
+
+{/* 
       <Grid md={12} 
       style={{
         marginTop:"20px"
@@ -86,7 +97,7 @@ const RestHour = () => {
             )}
           />
         </LocalizationProvider>
-      </Grid>
+      </Grid> */}
 
       <Grid
         container
@@ -104,9 +115,10 @@ const RestHour = () => {
             borderRadius: "12px",
             height: "62vh",
             overflowY: "auto",
+            overflowX: "auto",
           }}
           sx={{
-            "&::-webkit-scrollbar": { display: "none" },
+            // "&::-webkit-scrollbar": { display: "none" },
           }}
         >
           <RestHourTable data={devices} />
