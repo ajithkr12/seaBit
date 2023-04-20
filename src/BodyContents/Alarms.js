@@ -25,6 +25,9 @@ const Alarms = () => {
 
     },
   }
+
+  const filteredItems = devices.filter(item => item.deviceType === "WEARABLES");
+
   return (
     <Grid container style={{ display: "flex", justifyContent: "center", alignItems: 'start',}}>
 
@@ -100,7 +103,7 @@ const Alarms = () => {
 
       <Grid md={3} style={{padding:'4px',margin:'0px'}}>
         <Grid style={styles.areaContainer}>
-          <AlarmArea data={devices} heading={'Health History'} icon={ecgMonitor}/>
+          <AlarmArea data={filteredItems} heading={'Health History'} icon={ecgMonitor}/>
         </Grid>
       </Grid>
 

@@ -42,10 +42,12 @@ const AlarmArea = (props) => {
       >
       {data.map((data,index)=> {
         return(
+
+
           <Box style={styles.mainContainer}>
             <Box style={styles.tittleContainer}>
               <div >
-                <h5 style={{ margin: "0px", fontSize: "12px", lineHeight: "20px" }}>{data.deviceName}</h5> 
+                <h5 style={{ margin: "0px", fontSize: "12px", lineHeight: "20px" }}>{data.deviceName} | {data.deviceType}</h5> 
                 <h5 style={{ margin: "0px", fontSize: "12px", lineHeight: "26px" }}> Location : {data.location}</h5>
               </div>
             </Box>    

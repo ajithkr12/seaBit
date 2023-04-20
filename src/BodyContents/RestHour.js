@@ -34,11 +34,19 @@ const RestHour = () => {
       <HeadingBar icon={Sleep} heading={"Rest Hour"} />
 
       <Grid md={12} 
-      style={{
-        marginTop:"20px"
-      }}
+   
+        style={{
+          // marginTop: "20px",
+          display: "flex",
+          justifyContent: 'space-between',
+          alignItems: "center",
+          padding:'0px'
+        }}
+
       >
         <h4>Today : {today.toDateString()}</h4>
+        <Button variant="contained" style={{margin:'0px'}}>Export</Button>
+
       </Grid>
 
 
@@ -118,13 +126,25 @@ const RestHour = () => {
             overflowX: "auto",
           }}
           sx={{
-            // "&::-webkit-scrollbar": { display: "none" },
+            // maxWidth: "100%",
+            "&::-webkit-scrollbar": {
+              height: 6,
+              width:6,
+              margin:'8px'
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: "white",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "grey",
+              borderRadius: 2,
+            },
           }}
         >
           <RestHourTable data={devices} />
         </Grid>
 
-        <Grid
+        {/* <Grid
           md={12}
           style={{
             marginTop: "1%",
@@ -134,7 +154,7 @@ const RestHour = () => {
           }}
         >
           <Button variant="contained">Export</Button>
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );
