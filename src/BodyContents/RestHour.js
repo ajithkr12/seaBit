@@ -11,6 +11,7 @@ import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import {Color} from '../Assets/Constants/Color'
 import {devices} from '../layouts/data'
+import Autocomplete from '@mui/material/Autocomplete';
 
 const JsDatetimeToSQLDate = (_datetime) => {
   var startDay = ("0" + _datetime.getDate()).slice(-2);
@@ -21,13 +22,10 @@ const JsDatetimeToSQLDate = (_datetime) => {
 };
 
 const RestHour = () => {
-  // const { devices, setDevices } = useContext(ContextConsumer);
+  const { devices, setDevices } = useContext(ContextConsumer);
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  const [schedlerDate, setSchedulerDate] = useState({
-    start: "2022-01-02",
-    end: "2022-03-03",
-  });
-  const today=new Date();
+
 
   return (
     <>
@@ -40,12 +38,75 @@ const RestHour = () => {
           display: "flex",
           justifyContent: 'space-between',
           alignItems: "center",
-          padding:'0px'
+          padding:'12px'
         }}
 
       >
-        <h4>Today : {today.toDateString()}</h4>
-        <Button variant="contained" style={{margin:'0px'}}>Export</Button>
+        <Grid >
+      <LocalizationProvider dateAdapter={AdapterMoment}>
+        <DesktopDatePicker
+          label="Start Date "
+          inputFormat="MM/DD/YYYY"
+          // value={startDate}
+          // onChange={(newDate) => {
+          //   setStartDate(newDate._d);
+          // }}
+          renderInput={(params) => <TextField {...params} 
+                                      sx={{
+                                        "& .MuiOutlinedInput-root": {
+                                          "& fieldset": {
+                                            borderRadius:"8px",
+                                            padding:"0px 12px"
+                                          },
+                                        }
+                                      }}
+                                      style={{width:"140px",fontSize:"14px",}}
+                                      size="small"
+                                    />}
+        />
+      </LocalizationProvider>
+        <>{"   -   "}</>
+
+        <LocalizationProvider dateAdapter={AdapterMoment}>
+          <DesktopDatePicker
+            label="Start Date "
+            // inputFormat="MM/DD/YYYY"
+            // value={new Date()}
+            // onChange={(newDate) => {
+            //   setStartDate(newDate._d);
+            // }}
+            renderInput={(params) => (
+              <TextField
+              size="small"
+              {...params}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderRadius: "8px",
+                      // padding: "0px 12px",
+                    },
+                  },
+                }}
+                style={{ width: "400px",}}
+              />
+            )}
+          />
+        </LocalizationProvider>   
+
+        </Grid>
+
+
+        <Autocomplete
+            disablePortal
+            size="small"
+            id="combo-box-demo"
+            options={devices}
+            getOptionLabel={(option) => option.deviceName}
+            sx={{ width: 300 }}
+            onChange={(e, value) => setSelectedOption(value)}
+            renderInput={(params) => <TextField {...params} label="Select Employee/Device" />}
+          /> 
+           <Button variant="contained" style={{margin:'0px'}}>Export</Button>
 
       </Grid>
 
@@ -161,3 +222,11 @@ const RestHour = () => {
 };
 
 export default RestHour;
+
+
+const options = [
+  { label: 'Master', id: 1 },
+  { label: 'Chief off', id: 2 },
+  { label: '2 off', id: 1 },
+  { label: '3 off', id: 2 },
+];
