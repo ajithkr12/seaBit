@@ -12,7 +12,9 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import {Color} from '../Assets/Constants/Color'
 import {devices} from '../layouts/data'
 import Autocomplete from '@mui/material/Autocomplete';
-
+import { PDFDownloadLink, Document, Page, Text, View } from '@react-pdf/renderer';
+import PDFExport from "../ExportPDF/PDFExport";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 const JsDatetimeToSQLDate = (_datetime) => {
   var startDay = ("0" + _datetime.getDate()).slice(-2);
   var startMonth = ("0" + (_datetime.getMonth() + 1)).slice(-2);
@@ -24,7 +26,8 @@ const JsDatetimeToSQLDate = (_datetime) => {
 const RestHour = () => {
   const { devices, setDevices } = useContext(ContextConsumer);
   const [selectedOption, setSelectedOption] = useState(null);
-
+  let fileNumber = 234124;
+  const fileName = `file-${fileNumber}.pdf`;
 
 
   return (
@@ -106,7 +109,9 @@ const RestHour = () => {
             onChange={(e, value) => setSelectedOption(value)}
             renderInput={(params) => <TextField {...params} label="Select Employee/Device" />}
           /> 
-           <Button variant="contained" style={{margin:'0px'}}>Export</Button>
+          <PDFDownloadLink document={<PDFExport />} fileName={fileName} style={{textDecoration:'none'}}>
+            <Button variant="outlined" startIcon={<FileDownloadIcon/>} style={{margin:'0px'}}>Export to Pdf</Button>  
+          </PDFDownloadLink>
 
       </Grid>
 

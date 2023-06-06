@@ -10,8 +10,8 @@ const RestHourTable = (props) => {
   // date =
   return (
     <>
-      <Grid md={12} style={styles.mainContainer}>
-        <table style={styles.tableContainer}>
+      <Grid md={12} style={styles.mainContainer} id="testId">
+        <table style={styles.tableContainer} >
           <thead>
             <tr style={styles.trContainer}>
               <th colspan="52" style={styles.thContainer}>Periods of works are shaded</th>
@@ -205,7 +205,6 @@ const styles = {
     borderCollapse:'collapse',
     width:'100%',
     textAlign:'center',
-    borderRadius:'18px'
   },
   trContainer:{
     borderWidth:"1px", 
